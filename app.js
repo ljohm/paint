@@ -65,11 +65,11 @@ function onMouseMove(event) {
     const x = event.offsetX;
     const y = event.offsetY;
     if(painting === false && drawingCircle === false) {
-        ctx.beginPath(); //경로 생성
-        ctx.moveTo(x, y); //라인 시작 좌표
+        ctx.beginPath(); 
+        ctx.moveTo(x, y); 
     } else if(painting === true) {
-        ctx.lineTo(x, y); //라인 끝 좌표
-        ctx.stroke(); //그리기
+        ctx.lineTo(x, y); 
+        ctx.stroke(); 
     } else if(drawingCircle === true || drawingTriangle === true || drawingRectangle === true) {
         ctx.moveTo(x, y);
     }
@@ -84,12 +84,16 @@ function handleColorClick(event) {
 function handleRangeChange(event) {
     const size = event.target.value;
     if(drawingCircle === true || drawingTriangle === true || drawingRectangle === true) {
-        radius = size * 20;
-        tHalfWidth = size * 20;
-        rHalfWidth = size * 20;
+        handleSizeChange(size);
     } else {
         ctx.lineWidth = size;
     }
+}
+
+function handleSizeChange(size) {
+    radius = size * 20;
+    tHalfWidth = size * 20;
+    rHalfWidth = size * 20;
 }
 
 function handleFillClick() {
